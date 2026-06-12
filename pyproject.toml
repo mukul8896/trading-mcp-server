@@ -1,0 +1,56 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "trading-mcp-server"
+version = "0.1.0"
+description = "Local MCP server exposing safe trading tools (market data, indicators, risk, paper trading, broker) for AI agents like Claude Code"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Mukul Kumar" }]
+keywords = ["mcp", "trading", "paper-trading", "nse", "claude"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Topic :: Office/Business :: Financial :: Investment",
+]
+
+dependencies = [
+    "mcp>=1.2.0",
+    "pandas>=2.0",
+    "numpy",
+    "requests",
+]
+
+[project.optional-dependencies]
+# Live broker connectivity (Angel One SmartAPI) — not needed for paper-only use
+broker = [
+    "smartapi-python",
+    "pyotp",
+    "logzero",
+    "websocket-client",
+]
+# Chartink watchlist scanning
+scanners = [
+    "bs4",
+    "lxml",
+]
+dev = [
+    "pytest",
+    "trading-mcp-server[broker,scanners]",
+]
+
+[project.scripts]
+trading-mcp-server = "trading_mcp_server.server:main"
+
+[project.urls]
+Repository = "https://github.com/mukul8896/trading-mcp-server"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/trading_mcp_server"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
