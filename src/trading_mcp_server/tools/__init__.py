@@ -7,6 +7,7 @@ from trading_mcp_server.tools import (
     indicators,
     market_data,
     news,
+    notifications,
     paper_trading,
     portfolio,
     risk,
@@ -23,6 +24,7 @@ ALL_TOOL_MODULES = [
     strategy,
     paper_trading,
     broker,
+    notifications,
 ]
 
 
