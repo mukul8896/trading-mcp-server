@@ -3,7 +3,7 @@
 ## Project context
 
 This repo is a **standalone, pip-installable Python package** that implements
-a local MCP server with safe trading tools (NSE / Angel One). It is consumed
+a local MCP with safe trading tools (NSE / Angel One). It is consumed
 by trading workspaces (e.g. the sibling `TradingAgent` repo) but must never
 depend on them. The agent using the tools lives elsewhere — this package only
 provides data, validation, simulation, and a guarded broker layer.
